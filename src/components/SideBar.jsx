@@ -19,7 +19,7 @@ const Categories = ({ selectedCategory, setselectedCategory }) => (
           setselectedCategory(category.name);
         }}
         style={{
-          backgroundColor: category.name === selectedCategory && "#FC1503",
+          backgroundColor: category.name === selectedCategory && "#2e2e2e",
           color: "white",
         }}
         key={category.name}

@@ -11,7 +11,7 @@ const Videos = ({ videos, direction }) => {
       flexWrap="wrap"
       justifyContent="start"
       alignItems="start"
-      gap={2}
+      gap={3}
     >
       {videos &&
         videos?.length > 0 &&

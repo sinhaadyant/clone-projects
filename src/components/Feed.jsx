@@ -40,7 +40,7 @@ const Feed = () => {
         />
       </Box>
       <Box
-        p={2}
+        p={3}
         sx={{
           overflow: "auto",
           height: "90vh",
@@ -53,7 +53,7 @@ const Feed = () => {
           mb={2}
           sx={{ color: "white" }}
         >
-          <span style={{ color: "#F31503" }}>{selectedCategory} Videos </span>
+          <span style={{ color: "#fff" }}>{selectedCategory} Videos </span>
         </Typography>
         <Videos videos={videos} />
       </Box>
