@@ -18,7 +18,15 @@ const Navbar = () => (
   >
     <Link to="/" style={{ display: "flex", alignItems: "center" }}>
       <img src="/logo192.png" alt={"logo"} height={45} />
-      <Typography variant="h5" p={2} ml={1} sx={{ color: "#fff" }}>
+      <Typography
+        variant="h5"
+        p={2}
+        ml={1}
+        sx={{
+          color: "#fff",
+          display: { xs: "none", sm: "none", md: "block" },
+        }}
+      >
         Youtube Clone
       </Typography>
     </Link>
