@@ -1,19 +1,29 @@
- 
-import {notFound} from "next/navigation";
+import { getSearchedMovies } from "@/app/page";
+import MoviesCarousel from "@/components/MovieCarousel";
+import { getPopularMovies } from "@/lib/getMovies";
+import { notFound } from "next/navigation";
 type Props = {
-    params:{
-        term:string;
-    }
+  params: {
+    term: string;
+  };
 };
-const SearchPage = ({params:{term}}:Props) => {
-    if(!term) notFound();
-    const termToUse = decodeURI(term);
+const SearchPage = async ({ params: { term } }: Props) => {
+  if (!term) notFound();
+  const termToUse = decodeURI(term);
+  const movies = await getSearchedMovies(term);
+  const popularMovies = await getPopularMovies();
 
-    // API call to get Searched Movies
-    // API call to get Popular Movies
-    return (
-        <div>Welcome to search page : {termToUse}</div>
-    )
-}
+  return (
+    <div className="max-w-7xl mx-auto">
+      <div className="flex flex-col space-y-5 mt-32 xl:mt-42">
+        <h1 className="text-6xl font-bold px-10">Results for {termToUse}</h1>
 
-export default SearchPage
+        <MoviesCarousel title="Movies" movies={movies} isVertical />
+
+        <MoviesCarousel title="You may also like" movies={popularMovies} />
+      </div>
+    </div>
+  );
+};
+
+export default SearchPage;
