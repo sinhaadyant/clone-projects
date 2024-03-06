@@ -1,6 +1,5 @@
-import { getSearchedMovies } from "@/app/page";
 import MoviesCarousel from "@/components/MovieCarousel";
-import { getPopularMovies } from "@/lib/getMovies";
+import { getPopularMovies, getSearchedMovies } from "@/lib/getMovies";
 import { notFound } from "next/navigation";
 type Props = {
   params: {
