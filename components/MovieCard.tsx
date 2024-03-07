@@ -39,7 +39,7 @@ const MovieCard = ({ movie, isVertical }: Props) => {
         key={movie.id}
         loading="lazy"
         placeholder="blur"
-        blurDataURL="/o8z.webp"
+        blurDataURL="o8z.webp"
       />
     </div>
   );

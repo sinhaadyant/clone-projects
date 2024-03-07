@@ -2,7 +2,11 @@ import CarouselBannerWrapper from "@/components/CarouselBannerWrapper";
 import MoviesCarousel from "@/components/MovieCarousel";
 import { Button } from "@/components/ui/button";
 import getImagePath from "@/lib/getImagePath";
-import { getMovieDetail, getPopularMovies } from "@/lib/getMovies";
+import {
+  getMovieDetail,
+  getPopularMovies,
+  getRelatedMovies,
+} from "@/lib/getMovies";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
@@ -17,7 +21,7 @@ const MovieDetail = async ({ params: { id } }: Props) => {
   if (!id) notFound();
   const termToUse = decodeURI(id);
   const movie: any = await getMovieDetail(id);
-  const popularMovies = await getPopularMovies();
+  const popularMovies = await getRelatedMovies(id);
 
   return (
     <div className="max-w-7xl mx-auto">

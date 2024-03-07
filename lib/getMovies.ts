@@ -123,6 +123,14 @@ export async function getDiscoverTV(id?: string, keywords?: string) {
 }
 
  
+export async function getRelatedMovies(id:string) {
+  console.log(`https://api.themoviedb.org/3/movie/${id}/recommendations`);
+  
+  const url = new URL(`https://api.themoviedb.org/3/movie/${id}/recommendations`);
+  const data = await fetchFromTMDB(url);
+
+  return data.results;
+}
 export async function getMovieDetail(id:string) {
   console.log(`https://api.themoviedb.org/3/movie/${id}`);
   
