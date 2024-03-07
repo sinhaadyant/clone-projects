@@ -131,11 +131,24 @@ export async function getRelatedMovies(id:string) {
 
   return data.results;
 }
-export async function getMovieDetail(id:string) {
-  console.log(`https://api.themoviedb.org/3/movie/${id}`);
+export async function getMovieDetail(id:string) { 
   
   const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
   const data = await fetchFromTMDB(url);
 
   return data;
+}
+export async function getTVDetail(id:string) { 
+  
+  const url = new URL(`https://api.themoviedb.org/3/tv/${id}`);
+  const data = await fetchFromTMDB(url);
+
+  return data;
+}
+export async function getRelatedTVSeries(id:string) { 
+  
+  const url = new URL(`https://api.themoviedb.org/3/tv/${id}/recommendations`);
+  const data = await fetchFromTMDB(url);
+
+  return data.results;
 }
