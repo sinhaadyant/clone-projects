@@ -4,6 +4,7 @@ import React from "react";
 import CarouselBannerWrapper from "@/components/CarouselBannerWrapper";
 import MoviesCarousel from "@/components/MovieCarousel";
 import {
+  getNowPlayingMovies,
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
@@ -41,7 +42,8 @@ export default function Home() {
     const upcomingMovies = await getUpcomingMovies();
     const topRatedMovies = await getTopRatedMovies();
     const popularMovies = await getPopularMovies();
-    return { upcomingMovies, topRatedMovies, popularMovies };
+    const nowPlayingMovies = await getNowPlayingMovies();
+    return { upcomingMovies, topRatedMovies, popularMovies, nowPlayingMovies };
   };
 
   return (
@@ -50,11 +52,17 @@ export default function Home() {
       <div className="flex flex-col space-y-2 xl:mt-48">
         {/* Fetch movies data */}
         {fetchMoviesData().then(
-          ({ upcomingMovies, topRatedMovies, popularMovies }) => (
+          ({
+            upcomingMovies,
+            topRatedMovies,
+            popularMovies,
+            nowPlayingMovies,
+          }) => (
             <>
-              <MoviesCarousel movies={upcomingMovies} title="Upcoming" />
-              <MoviesCarousel movies={topRatedMovies} title="Top Rated" />
+              <MoviesCarousel movies={nowPlayingMovies} title="Now Playing" />
               <MoviesCarousel movies={popularMovies} title="Popular" />
+              <MoviesCarousel movies={topRatedMovies} title="Top Rated" />
+              <MoviesCarousel movies={upcomingMovies} title="Upcoming" />
             </>
           )
         )}
