@@ -90,13 +90,19 @@ const MovieDetail = async ({ params: { id } }: Props) => {
             <Button>UA + {movie?.adult == true ? "18" : "9"}</Button>
             <div>
               {movie?.genres?.map((genre: { id: string; name: string }) => (
-                <Badge className="mr-1">{genre?.name}</Badge>
+                <Badge key={genre?.id} className="mr-1">
+                  {genre?.name}
+                </Badge>
               ))}
             </div>
             <div>
               {movie?.spoken_languages?.map(
                 (genre: { iso_639_1: string; english_name: string }) => (
-                  <Button className="mr-1" variant={"destructive"}>
+                  <Button
+                    key={genre?.iso_639_1}
+                    className="mr-1"
+                    variant={"destructive"}
+                  >
                     {genre?.english_name}
                   </Button>
                 )
@@ -105,7 +111,7 @@ const MovieDetail = async ({ params: { id } }: Props) => {
             <div>
               {movie?.production_companies?.map(
                 (genre: { id: string; name: string }) => (
-                  <Button className="mr-1" variant={"outline"}>
+                  <Button key={genre?.id} className="mr-1" variant={"outline"}>
                     {genre?.name}
                   </Button>
                 )
