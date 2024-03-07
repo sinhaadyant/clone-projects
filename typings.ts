@@ -32,7 +32,7 @@ export type Movie = {
   };
   export type SearchResults = {
     page: number;
-    results: Movie[];
+    results: any;
     total_pages: number;
     total_results: number;
   };
