@@ -2,6 +2,7 @@ import { Movie } from "@/typings";
 import MovieCard from "./MovieCard";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import SocialShare from "./SocialShare";
 
 type Props = { title?: string; movies: Movie[]; isVertical?: boolean };
 
@@ -65,6 +66,11 @@ function MoviesCarousel({ title, movies, isVertical }: Props) {
                   </p>
 
                   <p className="">{movie.overview}</p>
+
+                  <SocialShare
+                    shareUrl={`${process.env.SITE_BASE_URL}movieDetail/${movie?.id}`}
+                    title={movie.title}
+                  />
                 </div>
               </div>
             ))
