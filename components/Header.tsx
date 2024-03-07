@@ -3,6 +3,7 @@ import Link from "next/link";
 import GenreDropdown from "./GenreDropdown";
 import SearchInput from "./SearchInput";
 import ThemeToogler from "./ThemeToogler";
+import { Button } from "./ui/button";
 
 function Header() {
   return (
@@ -16,6 +17,15 @@ function Header() {
           className={"cursor-pointer invert"}
         />
       </Link>
+
+      <div className="flex space-x-2">
+        <Link href="/movies" className="mr-2">
+          <Button>Movies</Button>
+        </Link>
+        <Link href="/tv" className="mr-10">
+          <Button>TV Shows</Button>
+        </Link>
+      </div>
 
       <div className="flex space-x-2">
         <GenreDropdown />

@@ -51,7 +51,6 @@ export async function getSearchedMovies(term: string) {
       revalidate: 60 * 60 * 24,
     },
   };
-
   const response = await fetch(url.toString(), options);
   const data = (await response.json()) as SearchResults;
 
@@ -82,5 +81,43 @@ export async function getNowPlayingMovies() {
   const url = new URL("https://api.themoviedb.org/3/movie/now_playing");
   const data = await fetchFromTMDB(url);
 
+  return data.results;
+}
+
+
+export async function getAiringTodayTV() {
+  const url = new URL("https://api.themoviedb.org/3/tv/airing_today");
+  const data = await fetchFromTMDB(url);
+
+  return data.results;
+}
+
+export async function geton_the_airTV() {
+  const url = new URL("https://api.themoviedb.org/3/tv/on_the_air");
+  const data = await fetchFromTMDB(url);
+
+  return data.results;
+}
+
+export async function getPopularTV() {
+  const url = new URL("https://api.themoviedb.org/3/tv/popular");
+  const data = await fetchFromTMDB(url);
+
+  return data.results;
+}
+
+export async function getTopRatedTV() {
+  const url = new URL("https://api.themoviedb.org/3/tv/top_rated");
+  const data = await fetchFromTMDB(url);
+
+  return data.results;
+}
+export async function getDiscoverTV(id?: string, keywords?: string) {
+  const url = new URL(`https://api.themoviedb.org/3/discover/tv`);
+
+  keywords && url.searchParams.set("with_keywords", keywords);
+  id && url.searchParams.set("with_genres", id);
+
+  const data = await fetchFromTMDB(url);
   return data.results;
 }
