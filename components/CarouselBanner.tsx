@@ -6,14 +6,20 @@ import { Movie } from "@/typings";
 import Image from "next/image";
 import getImagePath from "@/lib/getImagePath";
 import { Button } from "./ui/button";
-
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  XIcon,
+} from "react-share";
 Autoplay.globalOptions = { delay: 8000 };
 
 function CarouselBanner({ movies }: { movies: Movie[] }) {
   const [emblaRef] = useEmblaCarousel({ loop: true, duration: 100 }, [
     Autoplay(),
   ]);
-
+  const shareUrl = "http://github.com";
+  const title = "GitHub";
   return (
     <div
       className="overflow-hidden lg:-mt-40 relative cursor-pointer"
@@ -87,6 +93,14 @@ function CarouselBanner({ movies }: { movies: Movie[] }) {
               </Button>
               <Button>UA + {movie?.adult == true ? "18" : "9"}</Button>
               <p className="max-w-xl line-clamp-3">{movie.overview}</p>
+
+              <FacebookShareButton url={shareUrl}>
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+
+              <TwitterShareButton url={shareUrl} title={title}>
+                <XIcon size={32} round />
+              </TwitterShareButton>
             </div>
           </div>
         ))}
