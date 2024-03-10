@@ -18,7 +18,7 @@ function Header() {
         />
       </Link>
 
-      <div className="flex space-x-2">
+      <div className="space-x-2">
         <Link href="/movies" className="mr-2">
           <Button>Movies</Button>
         </Link>

@@ -15,7 +15,7 @@ function MoviesCarousel({ title, movies, isVertical }: Props) {
 
       <div
         className={cn(
-          "flex space-x-4 overflow-scroll scrollbar-hide px-5 lg:px-10 py-5 flex-col md:flex-row  sm:flex-row  xs:flex-row",
+          "flex space-x-4 overflow-scroll scrollbar-hide px-5 lg:px-10 py-5 ",
           isVertical && "flex-col space-x-0 space-y-12"
         )}
       >
@@ -78,9 +78,7 @@ function MoviesCarousel({ title, movies, isVertical }: Props) {
               </div>
             ))
           : movies.map((movie) => (
-              <Link key={movie.id} href={`/movieDetail/${movie.id}`}>
-                <MovieCard key={movie.id} movie={movie} isVertical />
-              </Link>
+              <MovieCard key={movie.id} movie={movie} isVertical />
             ))}
       </div>
     </div>
